@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104013459) do
+ActiveRecord::Schema.define(version: 20171104024002) do
+
+  create_table "red_bag_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "user_id", null: false, comment: "用户 ID"
+    t.integer "red_bag_id", null: false, comment: "红包 ID"
+    t.decimal "money", precision: 12, scale: 2, default: "0.0", null: false, comment: "金额"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["red_bag_id", "user_id"], name: "index_red_bag_items_on_red_bag_id_and_user_id", unique: true
+  end
+
+  create_table "red_bags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "user_id", null: false, comment: "用户 ID"
+    t.decimal "money", precision: 12, scale: 2, default: "0.0", null: false, comment: "金额"
+    t.decimal "balance", precision: 12, scale: 2, default: "0.0", null: false, comment: "余额"
+    t.integer "numbers", null: false, comment: "数量"
+    t.integer "state", null: false, comment: "状态"
+    t.string "token", limit: 12, null: false, comment: "口令"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_red_bags_on_user_id"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "nickname", limit: 191, comment: "昵称"

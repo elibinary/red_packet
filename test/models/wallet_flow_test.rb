@@ -3,7 +3,8 @@ require 'test_helper'
 class WalletFlowTest < ActiveSupport::TestCase
   def setup
     @user = create :user
-    @wallet = create :wallet, user: @user
+    # @wallet = create :wallet, user: @user
+    @wallet = @user.wallet
   end
 
   test 'private method ensure_transaction_num should return string' do
