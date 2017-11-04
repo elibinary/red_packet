@@ -30,4 +30,13 @@ class RedBagTest < ActiveSupport::TestCase
     res = RedBag.fetch_by_code(@red_bag.safe_code)
     assert res
   end
+
+  test 'check_token should return true' do
+    assert RedBag.check_token(@red_bag.id, @red_bag.token)
+  end
+
+  test 'check_token should return false' do
+    assert_not RedBag.check_token(@red_bag.id, '1')
+    assert_not RedBag.check_token(0, @red_bag.token)
+  end
 end
