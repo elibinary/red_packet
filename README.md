@@ -10,35 +10,29 @@
 
 ## Run
 
-```apple js
+```
 reids: 127.0.0.1:6379
 ```
 
 ## Test
 
-```apple js
+```
+RAILS_ENV = test 
+redis: 127.0.0.1:6999
+
 bundle exec rake test
 ```
+Be careful！ Redis will be flush!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API
 
-Things you may want to cover:
+Your can generate test user
 
-* Ruby version
+```ruby
+rake generate_data:users
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 查看个人余额 (GET /wallets)
+* 发红包 (POST /red_bags)
+* 抢红包 (GET /red_bags/grab)
+* 用户抢到的红包列表 (GET /red_bags)

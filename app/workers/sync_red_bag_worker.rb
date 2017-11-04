@@ -2,6 +2,7 @@ class SyncRedBagWorker
   include Sidekiq::Worker
 
   def perform(user_id, red_bag_id, win_money)
+    win_money = BigDecimal.new(win_money)
     user = User.find_by(id: user_id)
     red_bag = RedBag.find_by(id: red_bag_id)
     if user && red_bag

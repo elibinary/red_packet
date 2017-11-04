@@ -16,7 +16,7 @@ class Api::V1::RedBagsController < Api::BaseController
       return
     end
 
-    render json: { success: 1, red_code: red.safe_code }
+    render json: { success: 1, red_code: red.safe_code, word: red.token }
   end
 
   # GET /red_bags/:id
