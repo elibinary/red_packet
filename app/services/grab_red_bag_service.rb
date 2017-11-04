@@ -43,7 +43,9 @@ class GrabRedBagService
         current_bag[:balance] -= win_money
         bag_value.value = current_bag
 
-        #TODO 持久化
+        # persistence
+        SyncRedBagWorker.perform_async(@user.id, @red_id, win_money)
+
         res[:state] = true
         res[:win_money] = win_money
       end

@@ -6,6 +6,8 @@ class GrabRedBagServiceTest < ActiveSupport::TestCase
     @user = create :user
     @red_bag = create :red_bag, user: @user, money: money, numbers: 10, balance: money
     @redis_key = RedBag.build_redis_key(@red_bag.id)
+
+    SyncRedBagWorker.stubs(:perform_async)
   end
 
   test 'call should return wrong token' do

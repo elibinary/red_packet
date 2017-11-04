@@ -37,6 +37,8 @@ gem 'redis-objects'
 gem 'jwt'
 gem 'enumerize'
 gem 'awesome_print'
+gem 'sidekiq', '~> 4.2'
+gem 'sidekiq-cron', '~> 0.6.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +47,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'
+  gem 'mocha', require: false
 end
 
 group :development do

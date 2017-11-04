@@ -62,10 +62,13 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     crass (1.0.2)
     enumerize (2.1.2)
       activesupport (>= 3.2)
     erubi (1.7.0)
+    et-orbi (1.0.8)
+      tzinfo
     execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -90,10 +93,13 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    metaclass (0.0.4)
     method_source (0.9.0)
     mini_mime (0.1.4)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    mocha (1.2.1)
+      metaclass (~> 0.0.1)
     multi_json (1.12.2)
     mysql2 (0.4.9)
     nio4r (2.1.0)
@@ -102,6 +108,8 @@ GEM
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
@@ -136,6 +144,8 @@ GEM
       redis (~> 3.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -150,6 +160,14 @@ GEM
     selenium-webdriver (3.7.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    sidekiq (4.2.10)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
+    sidekiq-cron (0.6.3)
+      rufus-scheduler (>= 3.3.0)
+      sidekiq (>= 4.2.1)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -196,12 +214,15 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jwt
   listen (>= 3.0.5, < 3.2)
+  mocha
   mysql2
   puma (~> 3.7)
   rails (~> 5.1.4)
   redis-objects
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq (~> 4.2)
+  sidekiq-cron (~> 0.6.3)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

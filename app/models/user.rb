@@ -4,6 +4,10 @@ class User < ApplicationRecord
   before_save :ensure_user_key
   after_commit :build_wallet, on: :create
 
+  def fetch_wallet
+    wallet || build_wallet
+  end
+
   private
 
   def ensure_user_key
