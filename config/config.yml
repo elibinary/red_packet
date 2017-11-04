@@ -1,0 +1,12 @@
+
+defaults: &defaults
+  jwt_secret: '9fa87723ea9b1ade3321a23f3972344497fec1f8'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

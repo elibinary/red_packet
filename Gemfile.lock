@@ -160,6 +160,7 @@ GEM
     selenium-webdriver (3.7.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    settingslogic (2.0.9)
     sidekiq (4.2.10)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -221,6 +222,7 @@ DEPENDENCIES
   redis-objects
   sass-rails (~> 5.0)
   selenium-webdriver
+  settingslogic (~> 2.0.6)
   sidekiq (~> 4.2)
   sidekiq-cron (~> 0.6.3)
   spring
