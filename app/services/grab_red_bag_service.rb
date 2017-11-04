@@ -10,11 +10,6 @@ class GrabRedBagService
   end
 
   def call
-    # red_bag_cache = Redis::Value.new(redis_key, marshal: true)
-    #
-    # unless red_bag_cache.value
-    #   red_bag = RedBag.find_by(id: @red_id)
-    # end
     return { state: false, msg: '口令错误' } unless RedBag.check_token(@red_id, @token)
 
     red_hash = Redis::HashKey.new("#{@redis_key}:hash_key")

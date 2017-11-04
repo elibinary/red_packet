@@ -18,4 +18,7 @@ Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
     chain.add Sidekiq::Middleware::Server::RetryJobs, max_retries: 3
   end
+
+  config.average_scheduled_poll_interval = 5
 end
+

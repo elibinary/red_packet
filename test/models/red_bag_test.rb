@@ -17,7 +17,7 @@ class RedBagTest < ActiveSupport::TestCase
   end
 
   test 'private set_token should set token' do
-    red_bag = create :red_bag, user: @user, token: ''
+    red_bag = create :red_bag, user: @user, token: nil
     red_bag.send(:set_token)
     assert red_bag.token.present?
   end

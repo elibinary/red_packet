@@ -8,8 +8,8 @@ class RedBag < ApplicationRecord
 
   enumerize :state, in: { normal: 1, empty: 2, refunded: 3 }, default: :normal, scope: true
 
-  before_commit :set_token, on: :create
-  after_commit :set_redis_info, on: :create
+  before_save :set_token
+  after_commit :set_redis_info, :set_refund_job, on: :create
 
   # counter :remaining_number
 
@@ -51,7 +51,7 @@ class RedBag < ApplicationRecord
   # '11111111' ~ 'ZZZZZZZZ'
   def set_token
     prng = Random.new
-    self.token = decimal_to_sexagesimal(prng.rand(2846806779661..167961599999999))
+    self.token ||= decimal_to_sexagesimal(prng.rand(2846806779661..167961599999999))
   end
 
   def set_redis_info
@@ -67,5 +67,9 @@ class RedBag < ApplicationRecord
 
   def redis_key
     "red:red_bag:#{id}"
+  end
+
+  def set_refund_job
+    RefundRedWorker.perform_at(5.minutes.from_now, id)
   end
 end
