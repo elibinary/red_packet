@@ -1,6 +1,6 @@
 class RedBag < ApplicationRecord
   extend Enumerize
-  include DecimalConverter
+
   include Redis::Objects
 
   belongs_to :user
@@ -8,22 +8,21 @@ class RedBag < ApplicationRecord
 
   enumerize :state, in: { normal: 1, empty: 2, refunded: 3 }, default: :normal, scope: true
 
-  before_save :set_token
   after_commit :set_redis_info, :set_refund_job, on: :create
 
   # counter :remaining_number
 
   def safe_code
-    decimal_to_sexagesimal(id)
+    DecimalConverter.decimal_to_sexagesimal(id)
   end
 
   class << self
     def fetch_by_code(code)
-      find_by(id: new.sexagesimal_to_decimal(code))
+      find_by(id: DecimalConverter.sexagesimal_to_decimal(code))
     end
 
     def cal_id_by_code(code)
-      new.sexagesimal_to_decimal(code)
+      DecimalConverter.sexagesimal_to_decimal(code)
     end
 
     def build_redis_key(id)
@@ -50,7 +49,8 @@ class RedBag < ApplicationRecord
         user: user,
         money: money,
         balance: money,
-        numbers: numbers
+        numbers: numbers,
+        token: generate_token
       }
 
       create(params)
@@ -126,14 +126,14 @@ class RedBag < ApplicationRecord
         }
       end
     end
+
+    # range: '11111111' ~ 'ZZZZZZZZ'
+    def generate_token
+      DecimalConverter.decimal_to_sexagesimal(Random.new.rand(2846806779661..167961599999999))
+    end
   end
 
   private
-
-  # range: '11111111' ~ 'ZZZZZZZZ'
-  def set_token
-    self.token ||= decimal_to_sexagesimal(Random.new.rand(2846806779661..167961599999999))
-  end
 
   def set_redis_info
     counter = Redis::Counter.new("#{redis_key}:counter")

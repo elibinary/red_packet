@@ -1,5 +1,25 @@
 # README
 
+## Base
+
+* ruby 2.4.0, rails 5.1.4
+
+## Dependencies
+
+* MySQL, Redis, Sidekiq
+
+## Run
+
+```apple js
+reids: 127.0.0.1:6379
+```
+
+## Test
+
+```apple js
+bundle exec rake test
+```
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

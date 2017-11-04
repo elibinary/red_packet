@@ -1,7 +1,7 @@
 class Api::BaseController < ApplicationController
   before_action :authenticate_token
 
-  if Rails.env.qa? || Rails.env.production?
+  if Rails.env.production?
     rescue_from(Exception, with: :respond_all_error)
   end
 

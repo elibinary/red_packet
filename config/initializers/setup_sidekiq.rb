@@ -1,6 +1,6 @@
 redis_url = if Rails.env.production?
       'redis://localhost:6379/0'
-    elsif Rails.env.qa?
+    elsif Rails.env.development?
       'redis://localhost:6379/0'
     else
       'redis://localhost:6379/0'
