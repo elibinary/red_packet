@@ -38,8 +38,9 @@ gem 'jwt'
 gem 'enumerize'
 gem 'awesome_print'
 gem 'sidekiq', '~> 4.2'
-gem 'sidekiq-cron', '~> 0.6.3'
 gem 'settingslogic', '~> 2.0.6'
+gem 'redis-rails', '~> 5'
+gem 'redis-store', '~> 1.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

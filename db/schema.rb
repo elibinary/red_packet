@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104024002) do
+ActiveRecord::Schema.define(version: 20171104165755) do
 
   create_table "red_bag_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "user_id", null: false, comment: "用户 ID"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20171104024002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["red_bag_id", "user_id"], name: "index_red_bag_items_on_red_bag_id_and_user_id", unique: true
+    t.index ["user_id"], name: "index_red_bag_items_on_user_id"
   end
 
   create_table "red_bags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
