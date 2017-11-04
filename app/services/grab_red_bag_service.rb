@@ -56,9 +56,8 @@ class GrabRedBagService
     return money if num == 1
     return BigDecimal.new('0.01') if money * 100 == num
 
-    prng = Random.new
-    res = prng.rand(1..(money * 100 * 2 / num).to_i)
+    res = Random.new.rand(1..(money * 100 * 2 / num).to_i)
     res = BigDecimal.new(res) / 100
-    (money - res) * 100 < (num - 1) ? money - BigDecimal.new(num-1) / 100 : res
+    (money - res) * 100 < (num - 1) ? money - BigDecimal.new(num - 1) / 100 : res
   end
 end

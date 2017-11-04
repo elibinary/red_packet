@@ -88,4 +88,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.cache_store = :redis_store, "redis://127.0.0.1:6379/0", {
+      compress: true,
+      compress_threshold: 32.kilobytes,
+      expires_in: 1.day,
+      namespace: 'red'
+  }
 end
