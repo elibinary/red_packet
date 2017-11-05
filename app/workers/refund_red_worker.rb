@@ -6,7 +6,8 @@ class RefundRedWorker
     return unless red_bag
     return unless red_bag.state.normal?
 
-    if (Time.now - red_bag.created_at) / 1.hour >= 24
+    # if (Time.now - red_bag.created_at) / 1.hour >= 24
+    if (Time.now - red_bag.created_at) / 1.minutes >= 2
       redis_key = RedBag.build_redis_key(red_bag_id)
       lock = Redis::Lock.new("#{redis_key}:lock")
       lock.lock do
