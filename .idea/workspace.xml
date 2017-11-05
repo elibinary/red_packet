@@ -66,21 +66,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="red_bag.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="red_bag.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/red_bag.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="155" column="39" lean-forward="false" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
+            <state relative-caret-position="379">
+              <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="refund_red_worker.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="refund_red_worker.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/workers/refund_red_worker.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="55" lean-forward="true" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+            <state relative-caret-position="285">
+              <caret line="15" column="55" lean-forward="false" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -89,8 +89,8 @@
       <file leaf-file-name="grab_red_bag_service.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/services/grab_red_bag_service.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state relative-caret-position="293">
+              <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -181,8 +181,8 @@
         <option value="$PROJECT_DIR$/test/controllers/api/v1/red_bags_controller_test.rb" />
         <option value="$PROJECT_DIR$/app/services/grab_red_bag_service.rb" />
         <option value="$PROJECT_DIR$/test/services/grab_red_bag_service_test.rb" />
-        <option value="$PROJECT_DIR$/app/models/red_bag.rb" />
         <option value="$PROJECT_DIR$/app/workers/refund_red_worker.rb" />
+        <option value="$PROJECT_DIR$/app/models/red_bag.rb" />
       </list>
     </option>
   </component>
@@ -662,7 +662,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68200000" />
+    <option name="totallyTimeSpent" value="69500000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1417" width="2560" height="1417" extended-state="6" />
@@ -918,6 +918,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,14 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/grab_red_bag_service.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.4.0/gems/sidekiq-4.2.10/lib/sidekiq/worker.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1070,18 +1063,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/red_bag.rb">
+    <entry file="file://$PROJECT_DIR$/app/services/grab_red_bag_service.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="155" column="39" lean-forward="false" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
+        <state relative-caret-position="293">
+          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/workers/refund_red_worker.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="55" lean-forward="true" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        <state relative-caret-position="285">
+          <caret line="15" column="55" lean-forward="false" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/red_bag.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
           <folding />
         </state>
       </provider>

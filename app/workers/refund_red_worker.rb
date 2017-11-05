@@ -11,6 +11,11 @@ class RefundRedWorker
       redis_key = RedBag.build_redis_key(red_bag_id)
       lock = Redis::Lock.new("#{redis_key}:lock")
       lock.lock do
+        bag_val = Redis::Value.new("#{redis_key}:value", marshal: true)
+        if bag_val.value
+          bag_val.value = bag_val.value.merge({ refunded: true })
+        end
+
         red_hash = Redis::HashKey.new("#{redis_key}:hash_key")
         total_win = red_hash.all.map { |k, v| v }.inject(0) { |sum, n| sum + BigDecimal.new(n) }
         db_win = red_bag.red_bag_items.sum(:money)

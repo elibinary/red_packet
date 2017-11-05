@@ -32,7 +32,7 @@ class RedBag < ApplicationRecord
     def check_token(id, token)
       bag_val = Redis::Value.new("#{build_redis_key(id)}:value", marshal: true)
       if bag_val.value
-        bag_val.value[:token] == token
+        bag_val.value[:token] == token && !bag_val.value[:refunded]
       else
         red_bag = RedBag.find_by(id: id)
         if red_bag && red_bag.state.normal?
