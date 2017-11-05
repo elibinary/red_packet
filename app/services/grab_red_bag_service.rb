@@ -10,6 +10,8 @@ class GrabRedBagService
   end
 
   def call
+    return { state: false, msg: '红包不存在' } unless @red_id
+
     return { state: false, msg: '口令错误' } unless RedBag.check_token(@red_id, @token)
 
     red_hash = Redis::HashKey.new("#{@redis_key}:hash_key")

@@ -35,6 +35,15 @@ class GrabRedBagServiceTest < ActiveSupport::TestCase
     assert_equal '红包已被抢光', res[:msg]
   end
 
+  test 'call should return not found' do
+    user = create :user
+    counter = Redis::Counter.new("#{@redis_key}:counter")
+    counter.value = 0
+    res = GrabRedBagService.call(user, 'ale', @red_bag.token)
+    assert_not res[:state]
+    assert_equal '红包不存在', res[:msg]
+  end
+
   test 'call' do
     res = []
     FactoryGirl.create_list(:user, 20).each do |user|
