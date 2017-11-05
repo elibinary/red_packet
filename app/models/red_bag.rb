@@ -153,6 +153,6 @@ class RedBag < ApplicationRecord
   end
 
   def set_refund_job
-    RefundRedWorker.perform_at(5.minutes.from_now, id)
+    RefundRedWorker.perform_at(24.hours.from_now, id)
   end
 end
