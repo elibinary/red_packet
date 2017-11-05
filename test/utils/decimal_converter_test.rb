@@ -10,4 +10,9 @@ class DecimalConverterTest < ActiveSupport::TestCase
     res = DecimalConverter.sexagesimal_to_decimal('6b')
     assert_equal 666, res
   end
+
+  test 'sexagesimal_to_decimal with wrong params' do
+    res = DecimalConverter.sexagesimal_to_decimal('aOc')
+    assert_nil res
+  end
 end

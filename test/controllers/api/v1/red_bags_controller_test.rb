@@ -50,6 +50,15 @@ class Api::V1::RedBagsControllerTest < ActionDispatch::IntegrationTest
     assert_equal @user.nickname, result['user_name']
   end
 
+  test 'get show with wrong code' do
+    token = RedTokenUtil.encode(openid: @user.user_key)
+    get "/api/v1/red_bags/zOz", headers: { 'RED-TOKEN' => token }
+    assert_response :success
+    result = JSON.parse(response.body)
+    assert_equal 0, result['success']
+    assert_equal '红包不存在', result['message']
+  end
+
   test 'get index' do
     red_bag = create :red_bag, user: @user, numbers: 1
     user = create :user
@@ -83,5 +92,26 @@ class Api::V1::RedBagsControllerTest < ActionDispatch::IntegrationTest
     result = JSON.parse(response.body)
     assert_equal 1, result['success']
     assert_equal '3.3', result['money']
+  end
+
+  test 'get grab with wrong token' do
+    GrabRedBagService.any_instance.stubs(:call).returns({ state: true, win_money: '3.3' } )
+
+    token = RedTokenUtil.encode(openid: 'abc')
+    get '/api/v1/red_bags/grab', headers: { 'RED-TOKEN' => token }, params: { red_code: @red_bag.safe_code, word: @red_bag.token }
+    assert_response 400
+    result = JSON.parse(response.body)
+    assert_equal 1001, result['error']['code']
+  end
+
+  test 'get grab with wrong params' do
+    GrabRedBagService.any_instance.stubs(:call).returns({ state: true, win_money: '3.3' } )
+
+    token = RedTokenUtil.encode(openid: @user.user_key)
+    get '/api/v1/red_bags/grab', headers: { 'RED-TOKEN' => token }, params: { red_code: @red_bag.safe_code }
+    assert_response :success
+    result = JSON.parse(response.body)
+    assert_equal 0, result['success']
+    assert_equal '参数错误', result['message']
   end
 end

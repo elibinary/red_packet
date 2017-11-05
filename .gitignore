@@ -20,4 +20,5 @@
 /node_modules
 /yarn-error.log
 .idea/
+coverage
 .byebug_history

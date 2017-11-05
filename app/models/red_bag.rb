@@ -58,6 +58,7 @@ class RedBag < ApplicationRecord
 
     def details_by_code(code)
       id = cal_id_by_code(code)
+      return unless id
       key = build_redis_key(id)
       counter = Redis::Counter.new("#{key}:counter")
       Rails.cache.fetch("red:bag:details:#{id}:#{counter.value}") do

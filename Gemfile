@@ -50,6 +50,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'mocha', require: false
+  gem 'simplecov', :require => false, :group => :test
 end
 
 group :development do

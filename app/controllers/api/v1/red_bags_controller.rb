@@ -24,6 +24,7 @@ class Api::V1::RedBagsController < Api::BaseController
     details = RedBag.details_by_code(params[:id])
     unless details
       render_fail('红包不存在')
+      return
     end
 
     render json: details
