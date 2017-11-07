@@ -7,6 +7,12 @@ class SyncRedBagWorker
     red_bag = RedBag.find_by(id: red_bag_id)
     if user && red_bag
       RedBag.transaction do
+        # 悲观锁锁红包余额
+        # lock.lock do
+        #   red_bag.balance -= win_money
+        #   red_bag.save
+        # end
+
         RedBagItem.create(red_bag_id: red_bag_id, user_id: user_id, money: win_money)
       end
 
